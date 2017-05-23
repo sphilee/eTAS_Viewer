@@ -6,9 +6,8 @@
         <h1>{{data.rotationR + data.rotationL +data.CC+data.CF+data.SL+data.LSL+data.acc+data.dcc+data.start+data.stop+data.uturn}}<small>회 위반</small></h1>
       </div>
       <div class="col col-30" style="text-align:center; font-size:50px;">
-        <h5 style="text-align:center;">속도</h5>
-        <i class="icon icon ion-ios-speedometer"></i>
-        <h1> {{data.speed}}<small> km/h</small></h1>
+      <div id="container-speed" style="width: 300px; height: 200px; float: left">
+      </div>
       </div>
       <div class="col col-30" style="text-align:center; font-size:50px;">
         <h5 style="text-align:center;">가속도</h5>
@@ -66,5 +65,6 @@
         <h5 style="text-align:right;">급정지: {{data.stop}}</h5>
       </div>
     </div>
+    
   </ion-content>
 </ion-view>
