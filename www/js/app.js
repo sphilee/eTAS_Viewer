@@ -49,6 +49,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
       }
     }
   })
+  .state('tab.graphs', {
+      url: '/graphs',
+      views: {
+        'tab-graphs': {
+          templateUrl: 'templates/tab-graphs.html',
+          controller: 'graphsCtrl'
+        }
+      }
+    })
+
 
   $ionicConfigProvider.navBar.alignTitle('center')
 

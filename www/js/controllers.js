@@ -1,11 +1,17 @@
 angular.module('starter.controllers', [])
 
+.controller('graphsCtrl', ["$scope", "$firebaseObject", function ($scope, $firebaseObject) {
+  
+  
+}])
+
+
   .controller("DashCtrl", ["$scope", "$firebaseObject", function ($scope, $firebaseObject) {
     var ref = firebase.database().ref("realtime");
     var obj = $firebaseObject(ref);
 
-
-    obj.$watch(function () {
+    var point;
+    
     var gaugeOptions = {
 
       chart: {
@@ -16,7 +22,7 @@ angular.module('starter.controllers', [])
 
       pane: {
         center: ['50%', '85%'],
-        size: '140%',
+        size: '80%',
         startAngle: -90,
         endAngle: 90,
         background: {
@@ -64,7 +70,7 @@ angular.module('starter.controllers', [])
     var chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
       yAxis: {
         min: 0,
-        max: 70,
+        max: 80,
         title: {
           text: 'Speed'
         }
@@ -91,23 +97,11 @@ angular.module('starter.controllers', [])
 
     }));
 
-    var point,
-        newVal,
-        inc;
 
-    if (chartSpeed) {
+    obj.$watch(function () {
+
         point = chartSpeed.series[0].points[0];
-        inc = obj.speed;
-        newVal = point.y + inc;
-
-        if (newVal < 0 || newVal > 70) {
-            newVal = point.y - inc;
-        }
-
-        point.update(newVal);
-    }
-
-
+        point.update(obj.speed);
 
 
       var accum = obj.rotationL + obj.rotationR + obj.uturn + obj.CC + obj.CF + obj.SL + obj.LSL + obj.acc + obj.dcc + obj.start + obj.stop;
@@ -144,3 +138,5 @@ angular.module('starter.controllers', [])
 
 
   }]);
+
+  

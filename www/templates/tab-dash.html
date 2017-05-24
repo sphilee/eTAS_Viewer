@@ -1,70 +1,75 @@
 <ion-view view-title="안전주행">
   <ion-content class="padding">
     <div class="row">
-      <div class="col col-40" style="text-align:center;">
+      <div style="text-align:left;">
+        <div id="container-speed" style="width: 240px; height: 160px;">
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <br><br>
         <h3 style="color: {{color}};">{{text}}</h3>
-        <h1>{{data.rotationR + data.rotationL +data.CC+data.CF+data.SL+data.LSL+data.acc+data.dcc+data.start+data.stop+data.uturn}}<small>회 위반</small></h1>
+        <h3>{{data.rotationR + data.rotationL +data.CC+data.CF+data.SL+data.LSL+data.acc+data.dcc+data.start+data.stop+data.uturn}}<small>회 위반</small></h3>
       </div>
-      <div class="col col-30" style="text-align:center; font-size:50px;">
-      <div id="container-speed" style="width: 300px; height: 200px; float: left">
-      </div>
-      </div>
-      <div class="col col-30" style="text-align:center; font-size:50px;">
-        <h5 style="text-align:center;">가속도</h5>
-        <i class="icon icon ion-ios-speedometer"></i>
-        <h1> {{data.accVel}}<small> km/h</small></h1>
-      </div>
+    </div>
 
-      <br>
-    </div>
-    <div class="row">
-      <div class="col col-30">
-        <progress max="50" value="{{ data.rotationL }}"> </progress>
-        <h5 style="text-align:right;">급좌회전: {{data.rotationL}}</h5>
+        <h3 style="color: #cc3300; text-align:center;">안전운전행동기준</h3>
+    <ion-item>
+      <div class="row">
+        <div class="col col-30">
+          <progress max="50" value="{{ data.rotationL }}"> </progress>
+          <h5 style="text-align:right;">급좌회전: {{data.rotationL}}</h5>
+        </div>
+        <div class="col col-30">
+          <progress max="50" value="{{ data.rotationR }}"> </progress>
+          <h5 style="text-align:right;">급우회전: {{data.rotationR}}</h5>
+        </div>
+        <div class="col col-30">
+          <progress max="50" value="{{ data.uturn }}"> </progress>
+          <h5 style="text-align:right;">급유턴: {{data.uturn}}</h5>
+        </div>
       </div>
-      <div class="col col-30">
-        <progress max="50" value="{{ data.rotationR }}"> </progress>
-        <h5 style="text-align:right;">급우회전: {{data.rotationR}}</h5>
+      <div class="row">
+        <div class="col col-30">
+          <progress max="50" value="{{ data.CC }}"> </progress>
+          <h5 style="text-align:right;">급진로변경: {{data.CC}}</h5>
+        </div>
+        <div class="col col-30">
+          <progress max="50" value="{{ data.CF }}"> </progress>
+          <h5 style="text-align:right;">급앞지르기: {{data.CF}}</h5>
+        </div>
+
+        <div class="col col-30">
+          <progress max="50" value="{{ data.SL }}"> </progress>
+          <h5 style="text-align:right;">과속: {{data.SL}}</h5>
+        </div>
+        <div class="col col-30">
+          <progress max="50" value="{{ data.LSL }}"> </progress>
+          <h5 style="text-align:right;">장기과속: {{data.LSL}}</h5>
+        </div>
       </div>
-      <div class="col col-30">
-        <progress max="50" value="{{ data.uturn }}"> </progress>
-        <h5 style="text-align:right;">급유턴: {{data.uturn}}</h5>
+      <div class="row">
       </div>
-      <div class="col col-30">
-        <progress max="50" value="{{ data.CC }}"> </progress>
-        <h5 style="text-align:right;">급진로변경: {{data.CC}}</h5>
+      <div class="row">
+        <div class="col col-30">
+          <progress max="50" value="{{ data.acc }}"> </progress>
+          <h5 style="text-align:right;">급가속: {{data.acc}}</h5>
+        </div>
+        <div class="col col-30">
+          <progress max="50" value="{{ data.dcc }}"> </progress>
+          <h5 style="text-align:right;">급감속: {{data.dcc}}</h5>
+        </div>
+        <div class="col col-30">
+          <progress max="50" value="{{ data.start }}"> </progress>
+          <h5 style="text-align:right;">급출발: {{data.start}}</h5>
+        </div>
+        <div class="col col-30">
+          <progress max="50" value="{{ data.stop }}"> </progress>
+          <h5 style="text-align:right;">급정지: {{data.stop}}</h5>
+        </div>
       </div>
-      <div class="col col-30">
-        <progress max="50" value="{{ data.CF }}"> </progress>
-        <h5 style="text-align:right;">급앞지르기: {{data.CF}}</h5>
+      <div class="row">
       </div>
-    </div>
-    <div class="row">
-      <div class="col col-30">
-        <progress max="50" value="{{ data.SL }}"> </progress>
-        <h5 style="text-align:right;">과속: {{data.SL}}</h5>
-      </div>
-      <div class="col col-30">
-        <progress max="50" value="{{ data.LSL }}"> </progress>
-        <h5 style="text-align:right;">장기과속: {{data.LSL}}</h5>
-      </div>
-      <div class="col col-30">
-        <progress max="50" value="{{ data.acc }}"> </progress>
-        <h5 style="text-align:right;">급가속: {{data.acc}}</h5>
-      </div>
-      <div class="col col-30">
-        <progress max="50" value="{{ data.dcc }}"> </progress>
-        <h5 style="text-align:right;">급감속: {{data.dcc}}</h5>
-      </div>
-      <div class="col col-30">
-        <progress max="50" value="{{ data.start }}"> </progress>
-        <h5 style="text-align:right;">급출발: {{data.start}}</h5>
-      </div>
-      <div class="col col-30">
-        <progress max="50" value="{{ data.stop }}"> </progress>
-        <h5 style="text-align:right;">급정지: {{data.stop}}</h5>
-      </div>
-    </div>
-    
+    </ion-item>
+
   </ion-content>
 </ion-view>
