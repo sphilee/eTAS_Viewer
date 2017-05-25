@@ -70,7 +70,7 @@ angular.module('starter.controllers', [])
     var chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
       yAxis: {
         min: 0,
-        max: 80,
+        max: 50,
         title: {
           text: 'Speed'
         }
@@ -105,24 +105,24 @@ angular.module('starter.controllers', [])
 
 
       var accum = obj.rotationL + obj.rotationR + obj.uturn + obj.CC + obj.CF + obj.SL + obj.LSL + obj.acc + obj.dcc + obj.start + obj.stop;
-      if (accum < 10) {
+      if (accum < 20) {
         $scope.color = '#33cc33';
         $scope.text = '우수';
-      } else if (accum < 20) {
+      } else if (accum < 40) {
         $scope.color = '#33ccff';
         $scope.text = '양호';
-      } else if (accum < 30) {
+      } else if (accum < 60) {
         $scope.color = '#ffff00';
         $scope.text = '보통';
-      } else if (accum < 40) {
+      } else if (accum < 80) {
         $scope.color = '#ff9900';
         $scope.text = '미달';
-      } else if (accum < 50) {
+      } else if (accum < 100) {
         $scope.color = '#cc3300';
         $scope.text = '위험';
       } else {
         $scope.color = '#c842f4';
-        $scope.text = '오류';
+        $scope.text = '이상';
       }
     });
 
