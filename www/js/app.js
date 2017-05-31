@@ -58,6 +58,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
         }
       }
     })
+  .state('tab.records', {
+      url: '/records',
+      views: {
+        'tab-records': {
+          templateUrl: 'templates/tab-records.html',
+          controller: 'recordsCtrl'
+        }
+      }
+    })
 
 
   $ionicConfigProvider.navBar.alignTitle('center')

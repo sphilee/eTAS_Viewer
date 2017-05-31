@@ -1,17 +1,202 @@
 angular.module('starter.controllers', [])
 
-.controller('graphsCtrl', ["$scope", "$firebaseObject", function ($scope, $firebaseObject) {
-  
-  
-}])
+  .controller('graphsCtrl', ["$scope", "$firebaseObject", function ($scope, $firebaseObject) {
+    var ref = firebase.database().ref("realtime");
+    var obj = $firebaseObject(ref);
+
+
+
+    Highcharts.setOptions({
+      global: {
+        useUTC: false
+      }
+    });
+
+    var chartGraph = Highcharts.chart('container', {
+      chart: {
+        type: 'spline',
+        animation: Highcharts.svg, // don't animate in old IE
+        marginRight: 10,
+        events: {
+          load: function () {
+
+            // set up the updating of the chart each second
+            // var series = this.series[0];
+            // setInterval(function () {
+            //     var x = (new Date()).getTime(), // current time
+            //         y = Math.random();
+            //     series.addPoint([x, y], true, true);
+            // }, 1000);
+          }
+        }
+      },
+      title: {
+        text: '속도, 가속도'
+      },
+      xAxis: {
+        type: 'datetime',
+        tickPixelInterval: 150
+      },
+      yAxis: {
+        title: {
+          text: 'km/h'
+        },
+        plotLines: [{
+          value: 0,
+          width: 1,
+          color: '#808080'
+        }]
+      },
+      tooltip: {
+        formatter: function () {
+          return '<b>' + this.series.name + '</b><br/>' +
+            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+            Highcharts.numberFormat(this.y, 2);
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      exporting: {
+        enabled: false
+      },
+      series: [{
+        name: 'Speed data',
+        data: (function () {
+          // generate an array of random data
+          var data = [],
+            time = (new Date()).getTime(),
+            i;
+
+          for (i = -30; i <= 0; i += 1) {
+            data.push({
+              x: time + i * 1000,
+              y: 0
+            });
+          }
+          return data;
+        }())
+      }, {
+        name: 'Acc data',
+        data: (function () {
+          // generate an array of random data
+          var data = [],
+            time = (new Date()).getTime(),
+            i;
+
+          for (i = -30; i <= 0; i += 1) {
+            data.push({
+              x: time + i * 1000,
+              y: 0
+            });
+          }
+          return data;
+        }())
+      }]
+    });
+    var chartGraph2 = Highcharts.chart('container2', {
+      chart: {
+        type: 'spline',
+        animation: Highcharts.svg, // don't animate in old IE
+        marginRight: 10,
+        events: {
+          load: function () {
+          }
+        }
+      },
+      title: {
+        text: '각속도'
+      },
+      xAxis: {
+        type: 'datetime',
+        tickPixelInterval: 150
+      },
+      yAxis: {
+        title: {
+          text: '°/sec'
+        },
+        plotLines: [{
+          value: 0,
+          width: 1,
+          color: '#808080'
+        }]
+      },
+      tooltip: {
+        formatter: function () {
+          return '<b>' + this.series.name + '</b><br/>' +
+            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+            Highcharts.numberFormat(this.y, 2);
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      exporting: {
+        enabled: false
+      },
+      series: [{
+        name: 'angular data',
+        data: (function () {
+          // generate an array of random data
+          var data = [],
+            time = (new Date()).getTime(),
+            i;
+
+          for (i = -30; i <= 0; i += 1) {
+            data.push({
+              x: time + i * 1000,
+              y: 0
+            });
+          }
+          return data;
+        }())
+      }]
+    });
+    var i = 0;
+    obj.$watch(function () {
+      const time = (new Date()).getTime();
+      if (i % 10 == 0) {
+        chartGraph.series[0].addPoint([time + i * 100, obj.speed], true, true);
+        chartGraph.series[1].addPoint([time + i * 100, obj.accVel], true, true);
+        chartGraph2.series[0].addPoint([time + i * 100, obj.angularVel], true, true);
+      }
+      i++;
+
+    });
+
+    $scope.data = obj;
+
+  }])
+
+  .controller('recordsCtrl', ["$scope", "$firebaseArray", function ($scope, $firebaseArray) {
+    var ref = firebase.database().ref("record");
+    var list = $firebaseArray(ref);
+    var items = [];
+    var cnt = 0;
+    list.$loaded()
+      .then(function (x) {
+
+        angular.forEach(x, function (x) {
+          x.id = cnt;
+         x.date = x.date.slice(0,24);
+          items.push(x);
+          cnt++;
+        })
+        console.log(items);
+        $scope.items = items;
+      })
+      .catch(function (error) {
+        console.log("Error:", error);
+      });
+
+
+  }])
 
 
   .controller("DashCtrl", ["$scope", "$firebaseObject", function ($scope, $firebaseObject) {
     var ref = firebase.database().ref("realtime");
     var obj = $firebaseObject(ref);
 
-    var point;
-    
     var gaugeOptions = {
 
       chart: {
@@ -93,15 +278,15 @@ angular.module('starter.controllers', [])
         }
       }]
 
-      
+
 
     }));
 
 
+
     obj.$watch(function () {
 
-        point = chartSpeed.series[0].points[0];
-        point.update(obj.speed);
+      chartSpeed.series[0].points[0].update(obj.speed);
 
 
       var accum = obj.rotationL + obj.rotationR + obj.uturn + obj.CC + obj.CF + obj.SL + obj.LSL + obj.acc + obj.dcc + obj.start + obj.stop;
@@ -139,4 +324,4 @@ angular.module('starter.controllers', [])
 
   }]);
 
-  
+
