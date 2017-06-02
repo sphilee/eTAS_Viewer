@@ -5,7 +5,8 @@
       <a ng-repeat="item in items" href="#/tab/records/{{item.id}}" class="item item-thumbnail-left">
           <img src="../img/car.png">
           <h2>{{ item.date }}</h2>
-          <h4>{{ item.artist }}</h4>
+          <h3 style = "color:#abb2bc; text-align: right;">{{ item.drivingTime }}</h3>
+          <h3 style = "color:#abb2bc; text-align: right;">{{ item.distance }}Km</h3>
         </a>
     </ion-list>
   </ion-content>

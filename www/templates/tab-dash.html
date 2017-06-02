@@ -6,7 +6,12 @@
         </div>
       </div>
       <div style="text-align:center;">
-        <br><br>
+        <button class="button button-full button-balanced" id="start" ng-click="startWatching()">
+            Start
+        </button>
+        <button class="button button-full button-assertive" id="stop" ng-click="stopWatching()">
+			      Stop
+		  	</button>
         <h3 style="color: {{color}};">{{text}}</h3>
         <h3>{{data.rotationR + data.rotationL +data.CC+data.CF+data.SL+data.LSL+data.acc+data.dcc+data.start+data.stop+data.uturn}}<small>회 위반</small></h3>
       </div>
