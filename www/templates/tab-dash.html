@@ -1,20 +1,35 @@
 <ion-view view-title="안전주행">
+  <ion-nav-buttons side="left">
+    <button ng-click="toggleLeft()" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <!--<ion-header-bar align-title="left" class="item-input-inset">
+    <label class="item-input-wrapper">
+        <i class="icon ion-ios7-search placeholder-icon"></i>
+        <input type="search"/>        
+    </label>
+    <button class="button button-clear">
+        Cancel
+    </button>
+  </ion-header-bar>-->
   <ion-content class="padding">
     <div class="row">
       <div style="text-align:left;">
-        <div id="container-speed" style="width: 240px; height: 160px;">
-        </div>
-      </div>
-      <div style="text-align:center;">
-        <br><br>
-        <h3 style="color: {{color}};">{{text}}</h3>
-        <h3>{{data.rotationR + data.rotationL +data.CC+data.CF+data.SL+data.LSL+data.acc+data.dcc+data.start+data.stop+data.uturn}}<small>회 위반</small></h3>
+        <div id="speed" style="min-width: 310px; max-width: 400px; height: 200px; margin: 0 auto"></div>
       </div>
     </div>
-
-    <h3 style="color: #cc3300; text-align:center;">안전운전행동기준</h3>
+    <div class="item item-avatar">
+      <img src="http://www.iconskid.com/images/192/-energy-icon-by-dustwin-this-is-an-for-greeneco-engergypower-192126.png" style="width: 9%;height: 50%;">
+      <h2 style="color: green; text-align:left;font-size: 18px;">안전운전행동기준</h2>
+    </div>
     <ion-item>
       <div class="row">
+        <div class="col col-30">
+          <div style="text-align:center;">
+            <br>
+            <h2 style="color: {{color}}; font-size: 18px;">{{text}}</h2>
+            <h4 style="color: gray;">{{data.rotationR + data.rotationL +data.CC+data.CF+data.SL+data.LSL+data.acc+data.dcc+data.start+data.stop+data.uturn}}<small>회 위반</small></h4>
+          </div>
+        </div>
         <div class="col col-30">
           <progress max="50" value="{{ data.rotationL }}"> </progress>
           <h5 style="text-align:right;">급좌회전: {{data.rotationL}}</h5>

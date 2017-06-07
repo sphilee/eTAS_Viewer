@@ -1,0 +1,165 @@
+.body-tumblr {
+  font-family: -apple-system, "Helvetica Neue", "Segoe WP", sans-serif !important;
+  color: #ffffff;
+  text-align: center;
+}
+
+.body-tumblr h1,
+.body-tumblr h2,
+.body-tumblr h3,
+.body-tumblr h4,
+.body-tumblr h5,
+.body-tumblr h6,
+.body-tumblr .h1,
+.body-tumblr .h2,
+.body-tumblr .h3,
+.body-tumblr .h4,
+.body-tumblr .h5,
+.body-tumblr .h6 {
+  color: #ffffff;
+}
+
+.body-tumblr .pane,
+.body-tumblr .view {
+  background-color: #36465d;
+}
+
+.body-tumblr .bar.bar-positive {
+  background-image: none;
+  border: none;
+}
+
+.body-tumblr .tabs-positive > .tabs,
+.body-tumblr .tabs.tabs-positive {
+  background-color: #2e3f53;
+}
+
+.body-tumblr .tabs-striped .tabs {
+  border-color: #445569;
+}
+
+.body-tumblr .tab-item.tab-item-active,
+.body-tumblr .tab-item.active,
+.body-tumblr .tab-item.activated {
+  color: #ffffff;
+}
+
+.body-tumblr .tab-item {
+  color: #9ea1a8;
+}
+
+.body-tumblr .tab-item.middle {
+  background-color: #519ec8;
+  border-radius: 7px;
+  color: #2e3f53;
+  opacity: 1;
+}
+
+.body-tumblr .tabs-striped .tabs .tab-item.middle {
+  border-radius: 0;
+}
+
+.body-tumblr .modal {
+  background-color: rgba(54, 70, 93, 0.95);
+}
+
+.body-tumblr .modal-backdrop-bg {
+  background-color: #36465d;
+  opacity: 0;
+}
+
+@media (min-width: 680px) {
+  .body-tumblr .modal {
+    background-color: transparent;
+  }
+  .body-tumblr .active .modal-backdrop-bg {
+    background-color: #36465d;
+    opacity: 0.98;
+  }
+}
+
+.body-tumblr .item,
+.body-tumblr .item-complex .item-content {
+  background: #36465d;
+  color: #ffffff;
+  text-align: left;
+  border-color: #445569;
+}
+
+.body-tumblr .item *,
+.body-tumblr .item-complex .item-content * {
+  color: #ffffff;
+}
+
+.body-tumblr .item.active,
+.body-tumblr .item.activated,
+.body-tumblr .item-complex.active .item-content,
+.body-tumblr .item-complex.activated .item-content,
+.body-tumblr .item .item-content.active,
+.body-tumblr .item .item-content.activated {
+  border-color: #445569;
+  background-color: #445569;
+}
+
+.body-tumblr .card .item,
+.body-tumblr .item.item-input {
+  background-color: #ffffff;
+  color: #444;
+}
+
+.body-tumblr .card {
+  margin: 0 0 20px 0;
+}
+
+.body-tumblr .profile-banner {
+  background-image: url(http://autodatz.com/wp-content/uploads/2017/05/Car-Wallpapers-For-Android-Phones-54-with-Car-Wallpapers-For-Android-Phones.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: 20px 0;
+}
+
+.body-tumblr .profile-banner img {
+  display: block;
+  margin: auto;
+  border: 5px solid #FFF;
+  width: 200px;
+  height: 200px;
+  border-radius: 25px;
+  margin-bottom: 30px;
+}
+
+.body-tumblr .toggle input:checked + .track {
+  background-color: #529ecc;
+  border-color: #529ecc;
+}
+
+.body-tumblr .toggle .track {
+  background-color: #858d98;
+  border-color: #858d98;
+}
+
+.body-tumblr .toggle .handle,
+.body-tumblr .toggle input:checked + .track .handle {
+  background-color: #36465d;
+  border-color: #36465d;
+  box-shadow: none;
+}
+
+.body-tumblr.platform-android .toggle .track {
+  background-color: #1c232b;
+  border-color: #858d98;
+}
+
+.body-tumblr.platform-android .toggle .handle {
+  background-color: #ffffff;
+  border-color: #36465d;
+  box-shadow: none;
+}
+
+.body-tumblr.platform-android .toggle input:checked + .track {
+  background-color: rgba(81, 158, 200, 0.25);
+}
+
+.body-tumblr.platform-android .toggle input:checked + .track .handle {
+  background-color: #519ec8;
+}

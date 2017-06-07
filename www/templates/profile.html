@@ -1,0 +1,23 @@
+<ion-view view-title="Profile">
+  <!--controller: "ProfileCtrl"-->
+  <ion-nav-buttons side="left">
+    <button ng-click="toggleLeft()" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <div ng-controller="ProfileCtrl">
+      <div class="list card">
+        <div class="bar bar-header bar-danger">
+          <button class="button button-icon"><i class="icon-person-add"></i></button>
+          <h1 class="title">Me</h1>
+          <button class="button button-icon"><i class="icon-gear-b"></i></button>
+        </div>
+        <div class="item item-body" style="text-align: center;">
+          <br><br>
+          <img id="profile-image" src="http://graph.facebook.com/{{user.id}}/picture?width=270&height=270">
+          <h3 id="profile-name">{{user.name}}</h3>
+          <span id="profile-description">{{user.email}}</span>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

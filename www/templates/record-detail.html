@@ -1,0 +1,37 @@
+<ion-view view-title="Tracker">
+  <ion-header-bar align-title="left" class="item-input-inset">
+    <label class="item-input-wrapper">
+        <i class="icon ion-ios7-search placeholder-icon"></i>
+        <input type="search"/>        
+    </label>
+    <button class="button button-clear">
+        Cancel
+    </button>
+  </ion-header-bar>
+  <ion-content>
+
+    <div class="list card">
+      <div class="row" style="text-align:center;">
+        <div class="col col-30">
+          <h6>시간</h6>
+          <p>{{item.drivingTimeStr}}</p>
+        </div>
+        <div class="col col-30">
+          <h6>거리</h6>
+          <p>{{item.distance}} km</p>
+        </div>
+        <div class="col col-30">
+          <h6>평균 속도</h6>
+          <p>{{item.averageSpeed}} km/h</p>
+        </div>
+      </div>
+
+
+      <div id="record" class="item tabs tabs-secondary tabs-icon-left" style="min-width:310px; height: 200px; margin :0 auto">
+
+      </div>
+
+    </div>
+
+  </ion-content>
+</ion-view>

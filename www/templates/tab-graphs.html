@@ -1,5 +1,17 @@
 <ion-view view-title="그래프">
-  <ion-content>
+  <ion-nav-buttons side="left">
+    <button ng-click="toggleLeft()" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-header-bar align-title="left" class="item-input-inset">
+    <label class="item-input-wrapper">
+        <i class="icon ion-ios7-search placeholder-icon"></i>
+        <input type="search"/>        
+    </label>
+    <button class="button button-clear">
+        Cancel
+    </button>
+  </ion-header-bar>
+  <ion-content class="padding">
     <div class="row">
       <div id="container" style="min-width: 310px; height: 250px; margin: 0 auto"></div>
     </div>
