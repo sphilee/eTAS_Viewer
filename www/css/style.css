@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @charset "UTF-8";
 /*
 To customize the look and feel of Ionic, you can override the variables
@@ -8878,3 +8879,14 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+=======
+/* Empty. Add your own CSS if you like */
+.button {
+  display:block;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: 1px solid red;
+  
+}
+>>>>>>> 739a506450bf7b9d87106c6495e8c94231d7cbe3
