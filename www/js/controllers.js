@@ -139,7 +139,7 @@ app.controller("DashCtrl", function ($scope, $ionicSideMenuDelegate, $firebaseOb
     // the value axis
     yAxis: {
       min: 0,
-      max: 200,
+      max: 60,
 
       minorTickInterval: 'auto',
       minorTickWidth: 1,
@@ -161,22 +161,22 @@ app.controller("DashCtrl", function ($scope, $ionicSideMenuDelegate, $firebaseOb
       },
       plotBands: [{
         from: 0,
-        to: 120,
+        to: 40,
         color: '#55BF3B' // green
       }, {
-        from: 120,
-        to: 160,
+        from: 40,
+        to: 50,
         color: '#DDDF0D' // yellow
       }, {
-        from: 160,
-        to: 200,
+        from: 50,
+        to: 60,
         color: '#DF5353' // red
       }]
     },
 
     series: [{
       name: 'Speed',
-      data: [80],
+      data: [40],
       tooltip: {
         valueSuffix: ' km/h'
       }
@@ -184,21 +184,104 @@ app.controller("DashCtrl", function ($scope, $ionicSideMenuDelegate, $firebaseOb
 
   });
 
+  const voiceList = ["급출발입니다.",
+
+    "급정지입니다.",
+
+    "급가속입니다.",
+
+    "급감속입니다.",
+
+    "과속입니다.",
+
+    "장기과속중입니다.",
+
+    "급좌회전입니다.",
+
+    "급우회전입니다.",
+
+    "급유턴입니다.",
+
+    "급진로변경입니다.",
+
+    "급앞지르기입니다."
+  ]
+  const voice = function (id, voice) {
+    if (id > 0) {
+      TTS
+        .speak({
+          text: voice,
+          locale: 'ko-KR',
+          rate: 1
+        }, function () {
+          // alert('success');
+        }, function (reason) {
+          alert(reason);
+        });
+    }
+  }
+
+  // obj.$watch(function () {
+  //   return obj.start;
+  // }, function (event) {
+  //   voice(event, voiceList[0]);
+  // });
+  // $scope.$watch(function () {
+  //   return obj.stop;
+  // }, function (event) {
+  //   voice(event, voiceList[1]);
+  // });
+  // $scope.$watch(function () {
+  //   return obj.acc;
+  // }, function (event) {
+  //   voice(event, voiceList[2]);
+  // });
+  // $scope.$watch(function () {
+  //   return obj.dcc;
+  // }, function (event) {
+  //   voice(event, voiceList[3]);
+  // });
+  // $scope.$watch(function () {
+  //   return obj.SL;
+  // }, function (event) {
+  //   voice(event, voiceList[4]);
+  // });
+  // $scope.$watch(function () {
+  //   return obj.LSL;
+  // }, function (event) {
+  //   voice(event, voiceList[5]);
+  // });
+  // $scope.$watch(function () {
+  //   return obj.rotationL;
+  // }, function (event) {
+  //   voice(event, voiceList[6]);
+  // });
+  // $scope.$watch(function () {
+  //   return obj.rotationR;
+  // }, function (event) {
+  //   voice(event, voiceList[7]);
+  // });
+
+  // $scope.$watch(function () {
+  //   return obj.utrun;
+  // }, function (event) {
+  //   voice(event, voiceList[8]);
+  // });
+  // $scope.$watch(function () {
+  //   return obj.CC;
+  // }, function (event) {
+  //   voice(event, voiceList[9]);
+  // });
+
+  // $scope.$watch(function () {
+  //   return obj.CF;
+  // }, function (event) {
+  //   voice(event, voiceList[10]);
+  // });
+
   obj.$watch(function () {
 
     chartSpeed.series[0].points[0].update(obj.speed);
-
-    TTS
-      .speak({
-        text: '급출발입니다. 타이어는 괜찮나요?',
-        locale: 'ko-KR',
-        rate: 0.9
-      }, function () {
-        alert("reason");
-        // TTStime = cnt;
-      }, function (reason) {
-         alert(reason);
-      });
 
     var accum = obj.rotationL + obj.rotationR + obj.uturn + obj.CC + obj.CF + obj.SL + obj.LSL + obj.acc + obj.dcc + obj.start + obj.stop;
     if (accum < 20) {
